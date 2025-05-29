@@ -1,0 +1,45 @@
+-------Estruta geral de lógica-------
+Todo código deve estar entre chaves <?php
+
+$variavel = ... //não é necessário definir o tipo ao iniciar
+define("PI", 3.14159) //define uma constante
+$lista = [0,1,2]
+$dic = [0=>"zero",1=>"um",2=>"dois"]
+
+if (arg){
+}elseif(arg){
+}else{}
+
+while(arg){}
+
+foreach(lista as nomeParaOItem){}
+
+function (arg){}
+
+-------Ações em lista-------
+.pop() 
+.push()
+unset()
+isset()
+
+
+-------Forms-------
+Se refere a toda ação(campos de texto, botões, caixas de seleção, etc.) dentro de uma tag <form/>
+
+action: Especifica a URL do script que processará os dados do formulário quando ele for submetido. Este script geralmente é uma página PHP.
+method: Define o método HTTP usado para enviar os dados do formulário. Os dois métodos mais comuns são GET e POST.
+
+GET: adequado para dados não sensíveis, são anexados à URL especificada no atributo action como parâmetros na string de consulta (query string).
+POST: enviados no corpo da requisição HTTP, de forma invisível na URL(seguro para dados sensíveis).    
+
+$_GET: Um array associativo que contém os dados enviados através do método GET.
+$_POST: Um array associativo que contém os dados enviados através do método POST. 
+$_REQUEST: Um array associativo que contém os dados enviados tanto por GET quanto por POST. No entanto, o uso de $_GET ou $_POST é mais recomendado para maior clareza e segurança.
+
+
+-------Estrutura de Acesso-------
+É necessário manter os arquivos dentro da pasta do servidor correspondente, no caso www.
+
+Para rodar o código no servidor, é necessário abrir o html com a url:
+http://localhost/caminho dentro da pasta do server
+
