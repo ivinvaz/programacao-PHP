@@ -5,6 +5,8 @@ $variavel = ... //não é necessário definir o tipo ao iniciar
 define("PI", 3.14159) //define uma constante
 $lista = [0,1,2]
 $dic = [0=>"zero",1=>"um",2=>"dois"]
+$objeto->propriedade;
+$objeto->metodo();
 
 if (arg){
 }elseif(arg){
@@ -17,11 +19,14 @@ foreach(lista as nomeParaOItem){}
 function (arg){}
 
 -------Ações em lista-------
-.pop() 
-.push()
-unset()
-isset()
-
+array_push(): Adiciona um ou mais elementos ao final do array.
+array_pop(): Remove e retorna o último elemento do array.
+array_key_exists(): Verifica se uma determinada chave existe no array.
+isset(): Verifica se uma variável (incluindo um elemento de array) está definida e não é NULL.
+unset(): Destrói uma variável (ou um elemento de array).
+count(): Retorna o número de elementos em um array.
+array_keys(): Retorna um array com todas as chaves de um array.
+array_values(): Retorna um array com todos os valores de um array.
 
 -------Forms-------
 Se refere a toda ação(campos de texto, botões, caixas de seleção, etc.) dentro de uma tag <form/>
@@ -32,10 +37,26 @@ method: Define o método HTTP usado para enviar os dados do formulário. Os dois
 GET: adequado para dados não sensíveis, são anexados à URL especificada no atributo action como parâmetros na string de consulta (query string).
 POST: enviados no corpo da requisição HTTP, de forma invisível na URL(seguro para dados sensíveis).    
 
+$_SERVER: Um array associativo que contém informações sobre o ambiente do servidor web e da requisição atual.
 $_GET: Um array associativo que contém os dados enviados através do método GET.
 $_POST: Um array associativo que contém os dados enviados através do método POST. 
 $_REQUEST: Um array associativo que contém os dados enviados tanto por GET quanto por POST. No entanto, o uso de $_GET ou $_POST é mais recomendado para maior clareza e segurança.
 
+GET: Faz uma consulta.
+POST: Adiciona um dados.
+PUT: Edita um dado.
+DELETE: Deleta um dado.
+
+-------Estrutura de Acesso/Gerenciamento de BD-------
+$conn = new mysqli($servername, $username, $password, $database); //Cria uma conexão ao banco de dados
+$conn->close(); //Termina a conexão
+
+$sql = "INSERT INTO tabela (parametro1,parametro2,parametro3) VALUES ('parametro1', 'parametro2', 'parametro3')"; //Adiciona mais um registro
+$sql = "UPDATE tabela SET aparametro='$novo_aparametro' WHERE parametro=$parametro_para_atualizar"; //Atualiza um registro
+$sql = "DELETE FROM tabela WHERE parametro=$parametro_para_deletar"; //Deleta um registro
+
+$sql = "SELECT coluna(s) FROM tabela"; 
+$result = $conn->query($sql);//Consulta um registro
 
 -------Estrutura de Acesso-------
 É necessário manter os arquivos dentro da pasta do servidor correspondente, no caso www.
