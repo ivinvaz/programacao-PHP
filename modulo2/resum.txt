@@ -1,0 +1,41 @@
+-------Estrutura de Criação/Inicialização-------
+Laravel é um framework para desenvolvimento de aplicativos web
+
+composer create-project laravel/laravel nomeDoApp //cria o arquivo com laravel
+php artisan serve //liga o servidor de desenvolvimento
+http://127.0.0.1:8000 //endereço genérico de acesso
+
+-------Estrutura de arquitetura MVC-------
+Model (Modelo): Representa os dados e a lógica de negócios relacionada a esses dados. No Laravel, os Modelos são 
+geralmente classes PHP que estendem Illuminate\Database\Eloquent\Model.Eles interagem com o banco de dados.
+
+View (Visão): Responsável por exibir os dados ao usuário. No Laravel, as Views são arquivos .blade.php que usam
+o Blade Templating Engine. Elas contêm HTML e pequenas partes de lógica para exibir os dados passados pelo 
+Controller.
+
+Controller (Controlador): Atua como um intermediário entre o Modelo e a Visão. Ele recebe as requisições do 
+usuário, interage com o Modelo para obter/salvar dados e então passa esses dados para a Visão para serem 
+exibidos.
+
+-------Estrutura de controladores/rotas-------
+Controladores serverm para gerenciar as rotas de um app
+
+php artisan make:controller nomeControlador //comando para criação de um controlador
+
+*dentro do arquivo routes/web*
+Route::get('/nomeDaView', [nomeDoControlador::class, 'nomeDaFuncao']); //cria uma nova rota que pode ser acessada por http://127.0.0.1:8000/nomeDaView
+
+*dentro da funcao com return no controlador*
+return view('nomeDaView', ['nomeDaVariaveNaView' => $variavelEscolhida]);
+
+-------Estrutura de Blade Templating Engine-------
+Motor de templates padrão do Laravel.
+
+Para exibir o conteúdo de uma variável, use chaves duplas: {{ $variavel }}.
+@if, @else, @endif. 
+@foreach, @endforeach.
+@for, @endfor .
+@extends
+@section 
+@yield: Para layouts (veremos em breve).
+@include: Para incluir outras views parciais.

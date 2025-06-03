@@ -5,8 +5,8 @@ $variavel = ... //não é necessário definir o tipo ao iniciar
 define("PI", 3.14159) //define uma constante
 $lista = [0,1,2]
 $dic = [0=>"zero",1=>"um",2=>"dois"]
-$objeto->propriedade;
-$objeto->metodo();
+$objeto->propriedade; //A seta chama uma propriedade do objeto
+$objeto->metodo(); //A seta chama um método do objeto
 
 if (arg){
 }elseif(arg){
@@ -32,7 +32,7 @@ array_values(): Retorna um array com todos os valores de um array.
 Se refere a toda ação(campos de texto, botões, caixas de seleção, etc.) dentro de uma tag <form/>
 
 action: Especifica a URL do script que processará os dados do formulário quando ele for submetido. Este script geralmente é uma página PHP.
-method: Define o método HTTP usado para enviar os dados do formulário. Os dois métodos mais comuns são GET e POST.
+method: Define o método HTTP usado para enviar os dados do formulário.
 
 GET: adequado para dados não sensíveis, são anexados à URL especificada no atributo action como parâmetros na string de consulta (query string).
 POST: enviados no corpo da requisição HTTP, de forma invisível na URL(seguro para dados sensíveis).    
@@ -58,9 +58,27 @@ $sql = "DELETE FROM tabela WHERE parametro=$parametro_para_deletar"; //Deleta um
 $sql = "SELECT coluna(s) FROM tabela"; 
 $result = $conn->query($sql);//Consulta um registro
 
+-------Estrutura de Sessão-------
+Sessões realizam um agrupamento de envios HTTP para que haja uma relação entre eles(login).
+session_start(): Inicia ou retoma uma sessão existente. Se uma sessão ainda não foi iniciada, ela criará uma nova.
+session_destroy(): Destrói todos os dados registrados em uma sessão. Ela não remove a ID da sessão do cookie do navegador, apenas os dados do lado do servidor. 
+Para realmente "deslogar" o usuário, você também pode precisar limpar o cookie de sessão.
+
+-------Estrutura de Cookie-------
+setcookie(): Usada para definir um cookie. Ela deve ser chamada antes de qualquer saída para o navegador.
+
+Sintaxe básica: setcookie(name, value, expire, path, domain, secure, httponly);
+name (obrigatório): O nome do cookie.
+value (opcional): O valor do cookie.
+expire (opcional): O tempo de expiração do cookie. Um timestamp Unix. Se omitido ou 0, o cookie será uma "sessão de cookie" e expira quando o navegador é fechado.
+path (opcional): O caminho no servidor onde o cookie estará disponível. Se for '/', o cookie estará disponível em todo o domínio.
+domain (opcional): O domínio para o qual o cookie está disponível.
+secure (opcional): Se true, o cookie só será enviado em conexões HTTPS seguras.
+httponly (opcional): Se true, o cookie só será acessível via HTTP(S) e não via JavaScript. (Aumenta a segurança contra ataques XSS).
+$_COOKIE: Superglobal que contém todos os cookies enviados pelo navegador para o servidor na requisição atual. É uma array associativa onde as chaves são os nomes dos cookies.
+
 -------Estrutura de Acesso-------
 É necessário manter os arquivos dentro da pasta do servidor correspondente, no caso www.
 
 Para rodar o código no servidor, é necessário abrir o html com a url:
 http://localhost/caminho dentro da pasta do server
-
