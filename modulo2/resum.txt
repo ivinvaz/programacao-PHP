@@ -39,3 +39,51 @@ Para exibir o conteúdo de uma variável, use chaves duplas: {{ $variavel }}.
 @section 
 @yield: Para layouts (veremos em breve).
 @include: Para incluir outras views parciais.
+
+-------Comandos báscios de sql-------
+Conectar ao MySQL server: mysql -u [username] -p
+mostrar as database disponíveis: SHOW DATABASES
+
+php artisan make:migration create_products_table //cria uma nova migração
+php artisan migrate // executa uma migração
+php artisan migrate:status // mostra o estado das migrações
+php artisan migrate:rollback // reverte a ultima leva de migrações
+php artisan migrate:fresh // remove todas as tabelas do bd e executa as migrações novamente
+
+-------Eloquent ORM-------
+Administrador de BD do laravel
+
+//Dentro do controller
+Product::all(): Retorna todos os registros.
+Product::find(1): Encontra um registro pelo ID da chave primária.
+Product::where('stock', '>', 10)->get(): Retorna registros onde o estoque é maior que 10.
+Product::first(): Retorna o primeiro registro que corresponde à consulta.
+Product::findorFail(1): Encontra pelo ID ou lança uma exceção se não encontrar.
+Product::orderBy('name', 'asc')->get(): Ordena por nome ascendente.
+Product::limit(5)->get(): Retorna apenas 5 registros.
+
+
+php artisan make:model nomeTabela //cria um modificador para a tabela escolhida 
+//dentro do modificador da tabela
+>use Illuminate\Database\Eloquent\Factories\HasFactory;
+dentro da class principal> use HasFactory;
+dentro da class principal>
+protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'stock'
+    ];
+
+
+//dentro do console interativo do artisan
+>php artisan tinker
+
+//método create() (requer a propriedade $fillable no modelo)
+>
+$item = App\Models\Product::create([
+    'name' => 'Nome',
+    'description' => 'Descrição.',
+    'price' => 1.0,
+    'stock' => 1
+]);

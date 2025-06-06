@@ -3,22 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Product;
 class PaginasController extends Controller
 {
     public function mostrarItens()
     {
-        $listaDeItens = [
-            'Maçã',
-            'Banana',
-            'Laranja',
-            'Uva',
-            'Pêssego'
-        ];
+        // Substitua a lista de itens estática pelos produtos do banco de dados
+        $produtos = Product::all(); // Seleciona todos os produtos da tabela 'products'
 
         return view('itens', [
-            'itens' => $listaDeItens,
-            'titulo' => 'Lista de Compras' 
+            'itens' => $produtos, // Agora 'itens' conterá objetos Product
+            'titulo' => 'Lista de Produtos'
         ]);
     }
 
